@@ -1,0 +1,14 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Backend
+- Language: Python 3.11
+- Framework: FastAPI
+- Dependencies: python-dotenv, requests, uvicorn
+
+Frontend
+- Framework: React
+- Styling: Tailwind CSS (served via CDN)
+- Development: JSX, React DOM, Babel
