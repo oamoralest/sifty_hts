@@ -26,7 +26,7 @@ RUN cd frontend && npm install
 COPY . .
 
 # Expose ports
-EXPOSE 7000 3000
+EXPOSE 8080 3000
 
 # The actual run command will be in docker-compose.yml
 CMD ["echo", "Please use docker-compose for development"] 

@@ -10,13 +10,13 @@ This document describes all the environment variables used in the Sifty_HTS appl
 HTS_API_KEY=your_hts_api_key_here
 
 # Backend Configuration
-BACKEND_PORT=7000
+BACKEND_PORT=8080
 BACKEND_HOST=0.0.0.0
 BACKEND_DEBUG=true
 
 # Frontend Configuration
 FRONTEND_PORT=3000
-REACT_APP_API_URL=http://localhost:7000  # Backend API URL for frontend to use
+REACT_APP_API_URL=http://localhost:8080  # Backend API URL for frontend to use
 
 # Development Settings
 LOGGING_ENABLED=true
@@ -50,7 +50,7 @@ MAX_REQUESTS_PER_MINUTE=100
 - `HTS_API_KEY`: Your API key for the US government HTS API
 
 ### Backend Configuration
-- `BACKEND_PORT`: Port number for the FastAPI backend (default: 7000)
+- `BACKEND_PORT`: Port number for the FastAPI backend (default: 8080)
 - `BACKEND_HOST`: Host address for the backend (default: 0.0.0.0)
 - `BACKEND_DEBUG`: Enable/disable debug mode for the backend
 

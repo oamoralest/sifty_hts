@@ -46,7 +46,7 @@ A web application for retrieving Harmonized Tariff Schedule (HTS) code data and 
    ```
 
 This will start both the backend and frontend with live reloading:
-- Backend will be available at http://localhost:7000
+- Backend will be available at http://localhost:8080
 - Frontend will be available at http://localhost:3000
 - Any changes to the code will automatically trigger a reload
 
@@ -80,7 +80,7 @@ docker-compose down
 
 3. Run the backend:
    ```bash
-   uvicorn main:app --reload --port 7000
+   uvicorn main:app --reload --port 8080
    ```
 
 #### Frontend (React)
@@ -99,8 +99,8 @@ docker-compose down
 ## API Documentation
 
 Once the backend is running, visit:
-- Swagger UI: http://localhost:7000/docs
-- ReDoc: http://localhost:7000/redoc
+- Swagger UI: http://localhost:8080/docs
+- ReDoc: http://localhost:8080/redoc
 
 ## Development Notes
 
