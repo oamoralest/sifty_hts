@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    command: bash -c "cd /app/backend && uvicorn main:app --host 0.0.0.0 --port 7000 --reload"
+    volumes:
+      - .:/app
+      - /app/backend/__pycache__
+      - /app/backend/api/__pycache__
+      - /app/backend/utils/__pycache__
+    ports:
+      - "7000:7000"
+    environment:
+      - PYTHONPATH=/app/backend
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
+
+  frontend:
+    build: .
+    command: bash -c "cd /app/frontend && npm start"
+    volumes:
+      - .:/app
+      - /app/frontend/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true  # Enable hot reload on Windows/Docker
+      - WDS_SOCKET_PORT=0  # Required for Create React App hot reload
+    env_file:
+      - .env
+    depends_on:
+      - backend 

@@ -8,7 +8,7 @@ A web application for retrieving Harmonized Tariff Schedule (HTS) code data and 
 - Search Federal Register documents
 - User-friendly frontend interface
 - RESTful API for integration with existing software
-- Docker containerization with live reloading
+- Docker containerization with live reloading for both frontend and backend
 
 ## Tech Stack
 
@@ -20,11 +20,13 @@ A web application for retrieving Harmonized Tariff Schedule (HTS) code data and 
 ## Prerequisites
 
 - Docker
-- Docker Compose (optional)
-- Python 3.11+ (for local development)
-- Node.js (for local development)
+- Docker Compose
+- Python 3.11+ (for local development without Docker)
+- Node.js (for local development without Docker)
 
-## Setup
+## Development Setup
+
+### Using Docker (Recommended)
 
 1. Clone the repository:
    ```bash
@@ -38,15 +40,29 @@ A web application for retrieving Harmonized Tariff Schedule (HTS) code data and 
    ```
    Update the environment variables with your API keys.
 
-3. Build and run with Docker:
+3. Start the development environment:
    ```bash
-   docker build -t sifty-hts .
-   docker run -p 7000:7000 -p 3000:3000 --env-file .env -v $(pwd):/app sifty-hts
+   docker-compose up
    ```
 
-## Development
+This will start both the backend and frontend with live reloading:
+- Backend will be available at http://localhost:7000
+- Frontend will be available at http://localhost:3000
+- Any changes to the code will automatically trigger a reload
 
-### Backend (FastAPI)
+To rebuild the containers after adding new dependencies:
+```bash
+docker-compose up --build
+```
+
+To stop the containers:
+```bash
+docker-compose down
+```
+
+### Local Development (Without Docker)
+
+#### Backend (FastAPI)
 
 1. Create a virtual environment:
    ```bash
@@ -67,7 +83,7 @@ A web application for retrieving Harmonized Tariff Schedule (HTS) code data and 
    uvicorn main:app --reload --port 7000
    ```
 
-### Frontend (React)
+#### Frontend (React)
 
 1. Install dependencies:
    ```bash
@@ -85,6 +101,15 @@ A web application for retrieving Harmonized Tariff Schedule (HTS) code data and 
 Once the backend is running, visit:
 - Swagger UI: http://localhost:7000/docs
 - ReDoc: http://localhost:7000/redoc
+
+## Development Notes
+
+- The development environment is configured for hot reloading:
+  - Backend: FastAPI with uvicorn's reload flag
+  - Frontend: Create React App's hot module replacement
+- Docker volumes are used to sync local changes with containers
+- Python bytecode generation is disabled in containers to avoid permission issues
+- Frontend hot reload is configured to work in Docker on all platforms
 
 ## Contributing
 
