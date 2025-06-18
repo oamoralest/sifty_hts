@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, HTTPException, Query, Path
 from typing import Dict, Any, List, Optional
 import requests
 import os
@@ -94,7 +94,7 @@ async def search_documents(
 
 @federal_register_router.get("/document/{document_number}")
 async def get_document(
-    document_number: str = Query(..., description="Federal Register document number")
+    document_number: str = Path(..., description="Federal Register document number")
 ) -> Dict[str, Any]:
     """
     Fetch a specific Federal Register document by its document number.

@@ -2,6 +2,8 @@
 .env
 .env.*
 !.env.example
+usitc_key.txt
+links.txt
 
 # Python
 __pycache__/
